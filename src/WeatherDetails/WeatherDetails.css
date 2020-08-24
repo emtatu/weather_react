@@ -1,0 +1,18 @@
+.wind,
+.pressure,
+.feels-like,
+.min-temp,
+.further-info,
+.max-temp,
+.sun-set {
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+  padding: 10%;
+  text-align: center;
+  background: rgb(187, 194, 201);
+  height: 47px;
+  margin: 15px;
+  flex-grow: 2;
+  display: flex;
+  padding-top: 50px;
+}

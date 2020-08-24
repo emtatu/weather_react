@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
+import ReactAnimatedWeather from "react-animated-weather";
 
 function Form() {
   let [city, setCity] = useState(null);
@@ -27,21 +28,48 @@ function Form() {
   function updateCity(event) {
     setCity(event.target.value);
   }
-
+  const defaults = {
+    icon: "CLEAR_DAY",
+    color: "goldenrod",
+    size: 50,
+    animate: true,
+  };
   return (
     <div className="searchCity">
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="searchCity" onChange={updateCity} />
-        <input type="submit" value="Search" />
-        <li>
-          {" "}
-          Temperature: {Math.round(temperature)} °C in {city}
-        </li>
-        <li>Description: {description}</li>
-        <li>Humidity: {humidity} %</li>
-        <li>Wind: {wind} km/h</li>
-        <li> {icon} </li>
-      </form>
+      <div className="my-card">
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="searchCity" onChange={updateCity} />
+          <input type="submit" value="Explore 🔍" />
+          <input className="search" type="button" value="🌍" />
+          <div className="weather-now">
+            <h3 className="animate__animated">
+              Last Update: day, time,{" "}
+              <img alt=" " className="animate__animated" />
+              flag
+            </h3>
+            <div className="row">
+              <div>
+                <li>
+                  {" "}
+                  Temperature: {Math.round(temperature)} °C in {city}
+                </li>
+                <li>Description: {description}</li>
+                <li>Humidity: {humidity} %</li>
+                <img className="icon" alt="" />
+                <li>Wind: {wind} km/h</li>
+                <li> {icon} </li>
+                <ReactAnimatedWeather
+                  icon={defaults.icon}
+                  color={defaults.color}
+                  size={defaults.size}
+                  animate={defaults.animate}
+                />
+              </div>
+              <div className="wather-hourly"></div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
