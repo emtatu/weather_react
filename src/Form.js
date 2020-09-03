@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import ReactAnimatedWeather from "react-animated-weather";
+import Icon from "./Icon";
 
 function Form() {
   let [city, setCity] = useState(null);
@@ -58,8 +58,10 @@ function Form() {
                   {" "}
                   {Math.round(temperature)} °C in {city}
                 </div>
+                <div className="floath-left">
+                  <Icon code={icon} />
+                </div>
 
-                <div className="icon"> {icon} </div>
                 <div className="description"> {description}</div>
                 <div className="humidity">humidity: {humidity} %</div>
                 <div className="feelsLike">
