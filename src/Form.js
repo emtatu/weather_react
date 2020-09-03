@@ -48,11 +48,7 @@ function Form() {
             <div className="col-6">
               <div className="temperature" />
               <div>
-                <h4 className="animate__animated">
-                  Last Update: day, time,{" "}
-                  <img alt=" " className="animate__animated" />
-                  flag
-                </h4>
+                <h4 className="animate__animated">Last Update: day, time </h4>
 
                 <div className="temp">
                   {" "}
