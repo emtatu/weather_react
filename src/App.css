@@ -1,14 +1,86 @@
 .App {
+  text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  text-align: center;
+
+  display: block;
+  align-items: center;
 }
 li {
   list-style-type: none;
-  padding: 7px;
+}
+
+.weather-now,
+.weather-details {
+  display: flex;
+  align-self: center;
+}
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.temp,
+.description,
+.humidity,
+.feelsLike {
+  font-size: 16px;
+}
+
+.icon {
+  font-size: 36px;
+}
+.col-6 {
+  display: flex;
+}
+.feels-like {
+  display: flex;
+}
+.units {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.icon {
+  display: flex;
+}
+.wind,
+.pressure,
+.feels-like,
+.min-temp,
+.further-info,
+.max-temp,
+.sun-set {
+  border-radius: 10px;
+  margin-bottom: 0.5em;
+  padding: 10%;
+  text-align: left;
+  background: rgb(187, 194, 201);
+  height: 47px;
   margin: 10px;
 }
 
+.location {
+  display: flex;
+  align-items: center;
+  flex-grow: 99;
+}
+.img {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+.my-card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 20px;
+
+  margin-bottom: 1em;
+
+  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  opacity: 0.8;
+  font-size: 12px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -30,7 +102,9 @@ li {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.footer {
+  font-size: 12px;
+}
 .App-link {
   color: #61dafb;
 }

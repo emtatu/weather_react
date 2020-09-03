@@ -10,14 +10,22 @@ function Form() {
   let [humidity, setHumidity] = useState(null);
   let [wind, setWind] = useState(null);
   let [icon, setIcon] = useState(null);
+  let [feelsLike, setFeelsLike] = useState(null);
+  let [pressure, setPressure] = useState(null);
+  let [minTemp, setMintemp] = useState(null);
+  let [maxTemp, setMaxtemp] = useState(null);
 
   function showWeather(response) {
-    setTemperature(response.data.main.temp);
     console.log(response);
+    setTemperature(response.data.main.temp);
     setDescription(response.data.weather[0].description);
     setHumidity(response.data.main.humidity);
     setWind(response.data.wind.speed);
     setIcon(response.data.weather[0].icon);
+    setFeelsLike(response.data.main.feels_like);
+    setPressure(response.data.main.pressure);
+    setMintemp(response.data.main.temp_min);
+    setMaxtemp(response.data.main.temp_max);
   }
 
   function handleSubmit(event) {
@@ -28,48 +36,63 @@ function Form() {
   function updateCity(event) {
     setCity(event.target.value);
   }
-  const defaults = {
-    icon: "CLEAR_DAY",
-    color: "goldenrod",
-    size: 50,
-    animate: true,
-  };
+
   return (
     <div className="searchCity">
-      <div className="my-card">
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="searchCity" onChange={updateCity} />
-          <input type="submit" value="Explore 🔍" />
-          <input className="search" type="button" value="🌍" />
-          <div className="weather-now">
-            <h3 className="animate__animated">
-              Last Update: day, time,{" "}
-              <img alt=" " className="animate__animated" />
-              flag
-            </h3>
-            <div className="row">
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="searchCity" onChange={updateCity} />
+        <input type="submit" value="🔍" />
+
+        <div className="weather-now">
+          <div className="row">
+            <div className="col-6">
+              <div className="temperature" />
               <div>
-                <li>
+                <h4 className="animate__animated">
+                  Last Update: day, time,{" "}
+                  <img alt=" " className="animate__animated" />
+                  flag
+                </h4>
+
+                <div className="temp">
                   {" "}
-                  Temperature: {Math.round(temperature)} °C in {city}
-                </li>
-                <li>Description: {description}</li>
-                <li>Humidity: {humidity} %</li>
-                <img className="icon" alt="" />
-                <li>Wind: {wind} km/h</li>
-                <li> {icon} </li>
-                <ReactAnimatedWeather
-                  icon={defaults.icon}
-                  color={defaults.color}
-                  size={defaults.size}
-                  animate={defaults.animate}
-                />
+                  {Math.round(temperature)} °C in {city}
+                </div>
+
+                <div className="icon"> {icon} </div>
+                <div className="description"> {description}</div>
+                <div className="humidity">humidity: {humidity} %</div>
+                <div className="feelsLike">
+                  feels like: {Math.round(feelsLike)}°C
+                </div>
               </div>
-              <div className="wather-hourly"></div>
             </div>
           </div>
-        </form>
-      </div>
+          <div className="row">
+            <div className="col-6">
+              <div className="weather-details">
+                <h4>Weather details</h4>
+                <hr />
+                <div className="row">
+                  <div className="col-6">
+                    <div className="wind">Wind: {wind} km/h</div>
+                    <div className="pressure">Pressure: {pressure}</div>
+                  </div>
+                  <div className="col-6">
+                    <div className="max-temp">
+                      Max temp {Math.round(maxTemp)}°C/°F
+                    </div>
+                    <div className="min-temp">
+                      {" "}
+                      Min temp {Math.round(minTemp)}°C/°F
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
