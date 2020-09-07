@@ -84,11 +84,11 @@ function Form() {
                   </div>
                   <div className="col-6">
                     <div className="max-temp">
-                      Max temp {Math.round(maxTemp)}°C/°F
+                      Max temp {Math.round(maxTemp)}°C
                     </div>
                     <div className="min-temp">
                       {" "}
-                      Min temp {Math.round(minTemp)}°C/°F
+                      Min temp {Math.round(minTemp)}°C
                     </div>
                   </div>
                 </div>

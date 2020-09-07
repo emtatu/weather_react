@@ -15,10 +15,19 @@ li {
   display: flex;
   align-self: center;
 }
+.weather-now,
+.animate__animated {
+  padding: 10px;
+  margin: 10px;
+}
 .weather-details {
   display: flex;
   flex-direction: column;
   align-self: center;
+}
+.temp {
+  margin: 20px;
+  padding: 15px;
 }
 .temp,
 .description,
@@ -49,8 +58,7 @@ li {
 .feels-like,
 .min-temp,
 .further-info,
-.max-temp,
-.sun-set {
+.max-temp {
   border-radius: 10px;
   margin-bottom: 0.5em;
   padding: 10%;
