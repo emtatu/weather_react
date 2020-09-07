@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Icon from "./Icon";
-import "bootstrap/dist/css/bootstrap.min.css";
+import FormatedDate from "./FormatedDate";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 function Form() {
   let [city, setCity] = useState(null);
@@ -15,6 +16,7 @@ function Form() {
   let [pressure, setPressure] = useState(null);
   let [minTemp, setMintemp] = useState(null);
   let [maxTemp, setMaxtemp] = useState(null);
+  let [date, setDate] = useState(new Date());
 
   function showWeather(response) {
     console.log(response);
@@ -27,6 +29,7 @@ function Form() {
     setPressure(response.data.main.pressure);
     setMintemp(response.data.main.temp_min);
     setMaxtemp(response.data.main.temp_max);
+    setDate(new Date(response.data.dt * 1000));
   }
 
   function handleSubmit(event) {
@@ -49,7 +52,9 @@ function Form() {
             <div className="col-6">
               <div className="temperature" />
               <div>
-                <h4 className="animate__animated">Last Update: day, time </h4>
+                <h4 className="animate__animated">
+                  <FormatedDate date={date} />
+                </h4>
 
                 <div className="temp">
                   {" "}
